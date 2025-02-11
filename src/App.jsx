@@ -1,13 +1,9 @@
-
-
-
-// ---------------------------
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './index.css'; 
-import img from "./assets/img3.jpeg"// Create this file for custom styles
+import './index.css';
+import img from "./assets/img3.jpeg"; // Create this file for custom styles
 
 function App() {
   const [pin, setPin] = useState('');
@@ -18,16 +14,25 @@ function App() {
   const [amount, setAmount] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [confirmation, setConfirmation] = useState('');
+  const [error, setError] = useState(''); // State to store validation error messages
 
   const handlePinChange = (e) => setPin(e.target.value);
   const handleMenuChange = (e) => setMenu(e.target.value);
   const handleAirtimeOptionChange = (e) => setAirtimeOption(e.target.value);
   const handleAmountChange = (e) => setAmount(e.target.value);
-  
 
-    const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+  const handlePhoneNumberChange = (e) => {
+    const value = e.target.value;
+    setPhoneNumber(value);
 
- 
+    // Validate phone number length (must be exactly 11 digits)
+    if (value.length !== 11) {
+      setError('Phone number must be exactly 11 digits.');
+    } else {
+      setError('');
+    }
+  };
+
   const handleConfirmationChange = (e) => setConfirmation(e.target.value);
 
   const handleSubmit = (e) => {
@@ -92,6 +97,13 @@ function App() {
 
   const handleAirtimeSubmit = (e) => {
     e.preventDefault();
+
+    // Validate phone number length before proceeding
+    if (phoneNumber.length !== 11) {
+      setError('Phone number must be exactly 11 digits.');
+      return;
+    }
+
     if (!validateTransaction()) return;
 
     if (airtimeOption === '1') {
@@ -120,6 +132,13 @@ function App() {
 
   const handleTransferSubmit = (e) => {
     e.preventDefault();
+
+    // Validate phone number length before proceeding
+    if (phoneNumber.length !== 9) {
+      setError('Phone number must be exactly 11 digits.');
+      return;
+    }
+
     if (!validateTransaction()) return;
 
     alert(`You have successfully transferred $${amount} to ${phoneNumber}.`);
@@ -164,8 +183,9 @@ function App() {
 
   const resetForm = () => {
     setAmount('');
-     setPhoneNumber('');
-     setAirtimeOption('');
+    setPhoneNumber('');
+    setAirtimeOption('');
+    setError('');
   };
 
   const sliderSettings = {
@@ -178,9 +198,6 @@ function App() {
     autoplaySpeed: 3000,
   };
 
-  // check conutNumeber
-
-  
   return (
     <div className="min-h-screen bg-purple-950 flex flex-col items-center justify-center p-4">
       <h1 className="font-bold text-3xl text-green-700 text-center mb-4">EVC Plus</h1>
@@ -189,30 +206,22 @@ function App() {
       <img
         src={img}
         alt="Animated"
-        className="animated-image mb-8  w-60 h-60"
+        className="animated-image mb-8 w-60 h-60"
       />
 
       {/* Slider */}
-      <div className="slider-container mb-8  w-10 h-10">
+      <div className="slider-container mb-8 w-10 h-10">
         <Slider {...sliderSettings}>
-          <div>
-            {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzdQaUTMPl93iTtRWh4EbHFVD9woknwImV7CITQc1O9rFI_7_ty10iDJjMmBZlSSnUsyc&usqp=CAU" alt="Slide 1"
-              className="w-[30px] h-[20px]" /> */}
-          </div>
-          <div>
-            {/* <img src={img} alt="Slide 2"  className='w-[30px] h-[20px]'/> */}
-          </div>
-          <div>
-            {/* <img src="https://via.placeholder.com/800x400" alt="Slide 3" /> */}
-          </div>
+          <div></div>
+          <div></div>
+          <div></div>
         </Slider>
       </div>
 
       {step === 'welcome' && (
         <form onSubmit={handleSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2"
-             htmlFor="pin">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pin">
               Enter PIN
             </label>
             <input
@@ -288,17 +297,15 @@ function App() {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
                 Enter Phone Number
               </label>
-             
               <input
-              
                 type="text"
                 id="phoneNumber"
-                
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
                 className="w-full p-2 border rounded"
                 placeholder="Enter Phone Number"
               />
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
             </div>
           )}
           <div className="mb-4">
@@ -361,6 +368,7 @@ function App() {
               className="w-full p-2 border rounded"
               placeholder="Enter Phone Number"
             />
+            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
@@ -383,7 +391,6 @@ function App() {
           </button>
         </form>
       )}
-
     </div>
   );
 }
