@@ -51,7 +51,7 @@ function App() {
   const handleMenuSubmit = (e) => {
     e.preventDefault();
     const actions = {
-      '1': () => alert(`Your balance is $${balance}`),
+      '1': () => alert(`Haraagagu waa $${balance}`),
       '2': () => setStep('airtime'),
       '3': () => setStep('bill'),
       '4': () => setStep('transfer'),
