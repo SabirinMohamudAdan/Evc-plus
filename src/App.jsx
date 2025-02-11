@@ -135,7 +135,7 @@ function App() {
 
     // Validate phone number length before proceeding
     if (phoneNumber.length !== 9) {
-      setError('Phone number must be exactly 11 digits.');
+      setError('Phone number must be exactly 9  digits.');
       return;
     }
 
