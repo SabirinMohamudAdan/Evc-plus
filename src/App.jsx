@@ -23,7 +23,11 @@ function App() {
   const handleMenuChange = (e) => setMenu(e.target.value);
   const handleAirtimeOptionChange = (e) => setAirtimeOption(e.target.value);
   const handleAmountChange = (e) => setAmount(e.target.value);
-  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+  
+
+    const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+
+ 
   const handleConfirmationChange = (e) => setConfirmation(e.target.value);
 
   const handleSubmit = (e) => {
@@ -160,8 +164,8 @@ function App() {
 
   const resetForm = () => {
     setAmount('');
-    setPhoneNumber('');
-    setAirtimeOption('');
+     setPhoneNumber('');
+     setAirtimeOption('');
   };
 
   const sliderSettings = {
@@ -174,6 +178,9 @@ function App() {
     autoplaySpeed: 3000,
   };
 
+  // check conutNumeber
+
+  
   return (
     <div className="min-h-screen bg-purple-950 flex flex-col items-center justify-center p-4">
       <h1 className="font-bold text-3xl text-green-700 text-center mb-4">EVC Plus</h1>
@@ -281,9 +288,12 @@ function App() {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
                 Enter Phone Number
               </label>
+             
               <input
+              
                 type="text"
                 id="phoneNumber"
+                
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
                 className="w-full p-2 border rounded"
