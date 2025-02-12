@@ -73,8 +73,8 @@ function App() {
     if (!validateTransaction()) return;
 
     const message = airtimeOption === '1'
-      ? `You have successfully topped up $${amount} to your own number.`
-      : `You have successfully sent $${amount} to ${phoneNumber}.`;
+      ? `Waxaad ku shubatay $${amount} lambarkaaga. Haraagagu cusub waa $${balance - parseFloat(amount)}.`
+      : `Waxaad ugu shubatay $${amount} lambarka ${phoneNumber}. Haraagagu cusub waa $${balance - parseFloat(amount)}.`;
     alert(message);
     setBalance(balance - parseFloat(amount));
     resetForm();
@@ -84,7 +84,7 @@ function App() {
   const handleBillSubmit = (e) => {
     e.preventDefault();
     if (!validateTransaction()) return;
-    alert(`Bill payment of $${amount} has been processed.`);
+    alert(`Waxaad bixisay biil dhan $${amount}. Haraagagu cusub waa $${balance - parseFloat(amount)}.`);
     setBalance(balance - parseFloat(amount));
     resetForm();
     setStep('menu');
@@ -97,7 +97,8 @@ function App() {
       return;
     }
     if (!validateTransaction()) return;
-    alert(`You have successfully transferred $${amount} to ${phoneNumber}.`);
+    alert(`Waxaad ugu wareejisay $${amount} lambarka ${phoneNumber}.
+       Haraagagu  waa $${balance - parseFloat(amount)}.`);
     setBalance(balance - parseFloat(amount));
     resetForm();
     setStep('menu');
@@ -124,30 +125,23 @@ function App() {
     <div className="min-h-screen bg-purple-950 flex flex-col items-center justify-center p-4">
       <h1 className="font-bold text-3xl text-green-700 text-center mb-4">EVC Plus</h1>
       <img src={img} alt="Animated" className="animated-image mb-8 w-60 h-60" />
-      {/* <div className="slider-container mb-8 w-10 h-10">
-        <Slider {...sliderSettings}>
-          <div><img src={img} alt="Slide 1" className="w-full h-full" /></div>
-          <div><img src={img} alt="Slide 2" className="w-full h-full" /></div>
-          <div><img src={img} alt="Slide 3" className="w-full h-full" /></div>
-        </Slider>
-      </div> */}
 
       {step === 'welcome' && (
         <form onSubmit={handleSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pin">Enter PIN</label>
-            <input type="password" id="pin" value={pin} onChange={handleInputChange(setPin)} className="w-full p-2 border rounded" placeholder="Enter PIN" />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pin">Geli PIN</label>
+            <input type="password" id="pin" value={pin} onChange={handleInputChange(setPin)} className="w-full p-2 border rounded" placeholder="Geli PIN" />
           </div>
-          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">Submit</button>
+          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
 
       {step === 'menu' && (
         <form onSubmit={handleMenuSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="menu">Select Menu Option</label>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="menu">Dooro Xulasho</label>
             <select id="menu" value={menu} onChange={handleInputChange(setMenu)} className="w-full p-2 border rounded">
-              <option value="">Select an option</option>
+              <option value="">Dooro xulasho</option>
               <option value="1">Itus Haraaga</option>
               <option value="2">Kaarka hadalka</option>
               <option value="3">Bixi Biil</option>
@@ -159,57 +153,57 @@ function App() {
               <option value="9">Bill Payment</option>
             </select>
           </div>
-          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Submit</button>
+          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
 
       {step === 'airtime' && (
         <form onSubmit={handleAirtimeSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="airtime">Airtime Options</label>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="airtime">Dooro Airtime</label>
             <select id="airtime" value={airtimeOption} onChange={handleInputChange(setAirtimeOption)} className="w-full p-2 border rounded">
-              <option value="">Select an option</option>
+              <option value="">Dooro xulasho</option>
               <option value="1">Ku shubo Airtime</option>
               <option value="2">Ugu shub Airtime</option>
             </select>
           </div>
           {airtimeOption === '2' && (
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">Enter Phone Number</label>
-              <input type="text" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} className="w-full p-2 border rounded" placeholder="Enter Phone Number" />
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">Geli Lambarka</label>
+              <input type="text" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} className="w-full p-2 border rounded" placeholder="Geli Lambarka" />
               {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
             </div>
           )}
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Enter Amount</label>
-            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Enter Amount" />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Qadarka</label>
+            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Geli Qadarka" />
           </div>
-          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Submit</button>
+          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
 
       {step === 'bill' && (
         <form onSubmit={handleBillSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Enter Bill Amount</label>
-            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Enter Amount" />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Qadarka Biilka</label>
+            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Geli Qadarka" />
           </div>
-          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Submit</button>
+          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
 
       {step === 'transfer' && (
         <form onSubmit={handleTransferSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">Enter Phone Number</label>
-            <input type="text" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} className="w-full p-2 border rounded" placeholder="Enter Phone Number" />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">Geli Lambarka</label>
+            <input type="text" id="phoneNumber" value={phoneNumber} onChange={handlePhoneNumberChange} className="w-full p-2 border rounded" placeholder="Geli Lambarka" />
             {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Enter Amount</label>
-            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Enter Amount" />
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Qadarka</label>
+            <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Geli Qadarka" />
           </div>
-          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Submit</button>
+          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
     </div>
