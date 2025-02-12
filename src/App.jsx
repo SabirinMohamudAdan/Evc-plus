@@ -153,7 +153,7 @@ function App() {
               <option value="9">Bill Payment</option>
             </select>
           </div>
-          <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">Geli</button>
+          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">Geli</button>
         </form>
       )}
 
