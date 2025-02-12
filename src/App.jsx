@@ -7,7 +7,7 @@ import img from "./assets/img3.jpeg"; // Ensure this image exists
 
 function App() {
   const [pin, setPin] = useState('');
-  const [balance, setBalance] = useState(200);
+  const [balance, setBalance] = useState(350);
   const [menu, setMenu] = useState('');
   const [step, setStep] = useState('welcome');
   const [airtimeOption, setAirtimeOption] = useState('');
