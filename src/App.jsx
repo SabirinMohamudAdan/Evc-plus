@@ -161,7 +161,8 @@ function App() {
         <form onSubmit={handleAirtimeSubmit} className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="airtime">Dooro Airtime</label>
-            <select id="airtime" value={airtimeOption} onChange={handleInputChange(setAirtimeOption)} className="w-full p-2 border rounded">
+            <select id="airtime" value={airtimeOption}
+             onChange={handleInputChange(setAirtimeOption)} className="w-full p-2 border rounded">
               <option value="">Dooro xulasho</option>
               <option value="1">Ku shubo Airtime</option>
               <option value="2">Ugu shub Airtime</option>
@@ -188,7 +189,9 @@ function App() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Qadarka Biilka</label>
             <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Geli Qadarka" />
           </div>
-          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">Geli</button>
+          <button type="submit"
+           className="w-full bg-green-700 text-white p-2 rounded
+            hover:bg-teal-700">submit</button>
         </form>
       )}
 
