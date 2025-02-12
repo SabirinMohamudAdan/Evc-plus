@@ -33,7 +33,7 @@ function App() {
       return false;
     }
     if (parseFloat(amount) > balance) {
-      alert('Haragaagu kuma filna. Fadlan geli lacag ka yar ama ku eeg haragaaga.');
+      alert('Haragaagu kuma filna. Fadlan geli lacag ka yar am ku eeg haragaaga.');
       return false;
     }
     return true;
