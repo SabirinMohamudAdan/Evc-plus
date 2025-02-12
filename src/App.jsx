@@ -44,7 +44,7 @@ function App() {
     if (pin === '7799') {
       setStep('menu');
     } else {
-      alert('Invalid PIN');
+      alert('fadlan is ka sax pinka');
     }
   };
 
