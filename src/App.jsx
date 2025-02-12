@@ -132,7 +132,7 @@ function App() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pin">Geli PIN</label>
             <input type="password" id="pin" value={pin} onChange={handleInputChange(setPin)} className="w-full p-2 border rounded" placeholder="Geli PIN" />
           </div>
-          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">Geli</button>
+          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded hover:bg-teal-700">submit</button>
         </form>
       )}
 
