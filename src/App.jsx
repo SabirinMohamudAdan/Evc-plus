@@ -41,6 +41,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    alert("7799")
     if (pin === '7799') {
       setStep('menu');
     } else {
