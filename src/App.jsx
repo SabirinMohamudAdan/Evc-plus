@@ -178,7 +178,7 @@ function App() {
             </div>
           )}
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Qadarka</label>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">Geli Lacagta</label>
             <input type="number" id="amount" value={amount} onChange={handleInputChange(setAmount)} className="w-full p-2 border rounded" placeholder="Geli Qadarka" />
           </div>
           <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">submit</button>
