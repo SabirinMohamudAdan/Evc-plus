@@ -41,8 +41,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("7799")
-    if (pin === '7799') {
+     
+    if (pin === '4488') {
+
       setStep('menu');
     } else {
       alert('fadlan iska sax pinka');
